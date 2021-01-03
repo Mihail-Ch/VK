@@ -9,6 +9,7 @@ import UIKit
 
 class FriendsPhotoViewController: UIViewController {
     
+    var photo: User?
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -17,20 +18,9 @@ class FriendsPhotoViewController: UIViewController {
         }
     }
 
-    var photo: User?
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
-
-    
-    // MARK: - Navigation
-        
-
 }
 
 //MARK: - DataSource

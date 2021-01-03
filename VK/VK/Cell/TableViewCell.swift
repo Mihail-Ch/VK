@@ -13,6 +13,7 @@ class TableViewCell: UITableViewCell {
     static let reuseId = "TableViewCell"
     
     
+    @IBOutlet weak var viewAvatar: UIView!
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var label: UILabel!
     
@@ -23,8 +24,8 @@ class TableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        viewAvatar.layer.cornerRadius = viewAvatar.frame.height / 2
+        avatar.layer.cornerRadius = avatar.frame.height / 2
     }
     
     func configure(name: String, avatar: UIImage) {

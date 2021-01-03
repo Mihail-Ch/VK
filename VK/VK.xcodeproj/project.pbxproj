@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0362E5F525A24025005FC1AA /* ShadowRoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0362E5F425A24025005FC1AA /* ShadowRoundView.swift */; };
 		03708E98259A18D50080A30C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03708E97259A18D50080A30C /* User.swift */; };
 		03708EA0259A18E50080A30C /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03708E9F259A18E50080A30C /* Group.swift */; };
 		03708EA6259A1AC90080A30C /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03708EA5259A1AC90080A30C /* TableViewCell.xib */; };
@@ -47,6 +48,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0362E5F425A24025005FC1AA /* ShadowRoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRoundView.swift; sourceTree = "<group>"; };
 		03708E97259A18D50080A30C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		03708E9F259A18E50080A30C /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		03708EA5259A1AC90080A30C /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
@@ -100,6 +102,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0362E5F325A23FFC005FC1AA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0362E5F425A24025005FC1AA /* ShadowRoundView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		03708E96259A18A50080A30C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -144,6 +154,7 @@
 		039E6261258FD58D00772156 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				0362E5F325A23FFC005FC1AA /* View */,
 				03708EA4259A1AA50080A30C /* Cell */,
 				03708E96259A18A50080A30C /* Model */,
 				039E6295258FDB0100772156 /* Controller */,
@@ -320,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				03708ED0259B48E80080A30C /* MyGroupViewController.swift in Sources */,
+				0362E5F525A24025005FC1AA /* ShadowRoundView.swift in Sources */,
 				03708EB3259A20070080A30C /* FriendsViewController.swift in Sources */,
 				039E6297258FDB2500772156 /* LoginViewController.swift in Sources */,
 				03708EDA259B4B1F0080A30C /* GroupData.swift in Sources */,

@@ -24,17 +24,7 @@ class AllGroupViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.reuseId)
-
-        // Do any additional setup after loading the view.
     }
-    
-
-    
-    
-    
-    
-
-
 }
 
 //MARK: - DataSource
@@ -61,9 +51,6 @@ extension AllGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             performSegue(withIdentifier: "AddGroup", sender: nil)
         }
-    
-    
-    
 }
 
 //MARK: - Delegate

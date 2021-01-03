@@ -9,6 +9,7 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
+    var friends = UserData.friendsFactory()
     
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -16,21 +17,13 @@ class FriendsViewController: UIViewController {
             tableView.delegate = self
         }
     }
-    
-    var friends = UserData.friendsFactory()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.reuseId)
 
     }
-    
-    
-    // MARK: - Navigation
-
-   
-
 }
 
 //MARK: - DataSource
@@ -47,11 +40,7 @@ extension FriendsViewController: UITableViewDataSource {
         cell.configure(name: friend.userName, avatar: UIImage(named: friend.avatar)!)
         return cell
     }
-    /*
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "ShowFrindPhoto", sender: nil)
-    }
-    */
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             friends.remove(at: indexPath.row)
@@ -63,6 +52,7 @@ extension FriendsViewController: UITableViewDataSource {
 //MARK: - Delegate
 
 extension FriendsViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let selected = friends[indexPath.row]
         let vc = storyboard?.instantiateViewController(identifier: "FriendsPhotoViewControllerKey") as! FriendsPhotoViewController
