@@ -15,7 +15,7 @@ class FriendsPhotoViewController: UIViewController {
         didSet {
             collectionView.dataSource = self
             collectionView.delegate = self
-        }
+            }
     }
 
     override func viewDidLoad() {

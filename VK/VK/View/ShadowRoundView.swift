@@ -9,6 +9,16 @@ import UIKit
 
 @IBDesignable class ShadowRoundView: UIView {
     
+    @IBInspectable var borderWidth: CGFloat = 2 {
+        didSet {
+            self.updateBorderWidth()
+        }
+    }
+    @IBInspectable var borderColor: UIColor = .yellow {
+        didSet {
+            self.updateBorderColor()
+        }
+    }
     @IBInspectable var shadeColor: UIColor = .black {
         didSet {
             self.updateColors()
@@ -32,6 +42,14 @@ import UIKit
     
     override class var layerClass: AnyClass {
         return CAShapeLayer.self
+    }
+    
+    func updateBorderWidth() {
+        self.layer.borderWidth = self.borderWidth
+    }
+    
+    func updateBorderColor() {
+        self.layer.borderColor = self.borderColor.cgColor
     }
 
     func updateColors() {

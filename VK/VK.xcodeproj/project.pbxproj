@@ -28,6 +28,10 @@
 		039E627A258FD58E00772156 /* VKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E6279258FD58E00772156 /* VKTests.swift */; };
 		039E6285258FD58E00772156 /* VKUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E6284258FD58E00772156 /* VKUITests.swift */; };
 		039E6297258FDB2500772156 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039E6296258FDB2500772156 /* LoginViewController.swift */; };
+		03A335B325A45D0D00475741 /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A335B225A45D0D00475741 /* LikeButton.swift */; };
+		03F18C7425AF71FF001DFAAC /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18C7325AF71FF001DFAAC /* Session.swift */; };
+		03F18C7925AF7387001DFAAC /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F18C7825AF7387001DFAAC /* AuthorizationViewController.swift */; };
+		03F18C8225AF77BB001DFAAC /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F18C8125AF77BB001DFAAC /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +79,10 @@
 		039E6284258FD58E00772156 /* VKUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKUITests.swift; sourceTree = "<group>"; };
 		039E6286258FD58E00772156 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		039E6296258FDB2500772156 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		03A335B225A45D0D00475741 /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
+		03F18C7325AF71FF001DFAAC /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		03F18C7825AF7387001DFAAC /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		03F18C8125AF77BB001DFAAC /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F18C8225AF77BB001DFAAC /* WebKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +126,7 @@
 				03708E9F259A18E50080A30C /* Group.swift */,
 				03708EB7259A216E0080A30C /* UserData.swift */,
 				03708ED9259B4B1F0080A30C /* GroupData.swift */,
+				03F18C7325AF71FF001DFAAC /* Session.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -138,6 +148,7 @@
 				039E6278258FD58E00772156 /* VKTests */,
 				039E6283258FD58E00772156 /* VKUITests */,
 				039E6260258FD58D00772156 /* Products */,
+				03F18C8025AF77BA001DFAAC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +165,7 @@
 		039E6261258FD58D00772156 /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				03A335B125A45CA600475741 /* Button */,
 				0362E5F325A23FFC005FC1AA /* View */,
 				03708EA4259A1AA50080A30C /* Cell */,
 				03708E96259A18A50080A30C /* Model */,
@@ -161,7 +173,6 @@
 				039E6262258FD58D00772156 /* AppDelegate.swift */,
 				039E6264258FD58D00772156 /* SceneDelegate.swift */,
 				039E6266258FD58D00772156 /* ViewController.swift */,
-				039E6268258FD58D00772156 /* Main.storyboard */,
 				039E626B258FD58E00772156 /* Assets.xcassets */,
 				039E626D258FD58E00772156 /* LaunchScreen.storyboard */,
 				039E6270258FD58E00772156 /* Info.plist */,
@@ -195,8 +206,26 @@
 				03708EBC259A27F80080A30C /* FriendsPhotoViewController.swift */,
 				03708ECF259B48E80080A30C /* MyGroupViewController.swift */,
 				03708ED4259B48FD0080A30C /* AllGroupViewController.swift */,
+				03F18C7825AF7387001DFAAC /* AuthorizationViewController.swift */,
+				039E6268258FD58D00772156 /* Main.storyboard */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		03A335B125A45CA600475741 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				03A335B225A45D0D00475741 /* LikeButton.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		03F18C8025AF77BA001DFAAC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				03F18C8125AF77BB001DFAAC /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,7 +359,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F18C7925AF7387001DFAAC /* AuthorizationViewController.swift in Sources */,
 				03708ED0259B48E80080A30C /* MyGroupViewController.swift in Sources */,
+				03F18C7425AF71FF001DFAAC /* Session.swift in Sources */,
 				0362E5F525A24025005FC1AA /* ShadowRoundView.swift in Sources */,
 				03708EB3259A20070080A30C /* FriendsViewController.swift in Sources */,
 				039E6297258FDB2500772156 /* LoginViewController.swift in Sources */,
@@ -342,6 +373,7 @@
 				03708E98259A18D50080A30C /* User.swift in Sources */,
 				03708EAB259A1BF50080A30C /* TableViewCell.swift in Sources */,
 				03708EBD259A27F80080A30C /* FriendsPhotoViewController.swift in Sources */,
+				03A335B325A45D0D00475741 /* LikeButton.swift in Sources */,
 				03708ED5259B48FD0080A30C /* AllGroupViewController.swift in Sources */,
 				03708EC7259A52580080A30C /* PhotoCollectionViewCell.swift in Sources */,
 				039E6265258FD58D00772156 /* SceneDelegate.swift in Sources */,
