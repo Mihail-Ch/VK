@@ -30,6 +30,7 @@ class AuthorizationViewController: UIViewController {
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "262150"),
             URLQueryItem(name: "response_type", value: "token"),
+            URLQueryItem(name: "state", value: "12345"),
             URLQueryItem(name: "v", value: "5.126")
         ]
         
@@ -63,12 +64,15 @@ extension AuthorizationViewController: WKNavigationDelegate {
                 return dict
             }
         let token = params["access_token"]
-        print("👋 token: \(String(describing: token))")
+        let userId = params["user_id"]
         
+
         Session.shared.token = token!
-        
+        Session.shared.userId = Int(userId!)!
+        performSegue(withIdentifier: "GoApp", sender: nil)
+        print("👋 token:"  + token!)
         decisionHandler(.cancel)
         
-        performSegue(withIdentifier: "GoApp", sender: nil)
+       
     }
 }

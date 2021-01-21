@@ -9,8 +9,22 @@ import UIKit
 
 class AllGroupViewController: UIViewController {
 
+    //MARK: - Variables
+    var sections = [Section<Group>]()
     var groups = GroupData.groupFactory()
-        
+    var vkApi = VKApi()
+    let session = Session.shared
+    
+    
+    
+    
+    //MARK: - Outlet
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+            searchBar.placeholder = "Поиск"
+        }
+    }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.dataSource = self
@@ -22,8 +36,15 @@ class AllGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        makeSortedSection()
         tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.reuseId)
+    }
+    
+    func makeSortedSection() {
+        let groupsDictionary = Dictionary.init(grouping: groups) {
+           $0.groupName.prefix(1)}
+        sections = groupsDictionary.map { Section(letter: String($0.key), names: $0.value) }
+        sections.sort { $0.letter < $1.letter }
     }
 }
 
@@ -32,17 +53,18 @@ class AllGroupViewController: UIViewController {
 extension AllGroupViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return groups.count
+        return sections[section].letter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        cell.label.text = groups[indexPath.row].groupName
-        cell.avatar.image = UIImage(named: groups[indexPath.row].avatar)
+        let group = sections[indexPath.section]
+        cell.configure(name: group.names[indexPath.row].groupName, avatar: UIImage(named: group.names[indexPath.row].avatar)!)
+        
         return cell
     }
     
@@ -51,6 +73,27 @@ extension AllGroupViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             performSegue(withIdentifier: "AddGroup", sender: nil)
         }
+}
+
+//MARK: - SearchBarDelegate
+
+extension AllGroupViewController: UISearchBarDelegate {
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let groupsDictionary = Dictionary.init(grouping: groups.filter{ (group) -> Bool in
+            return searchText.isEmpty ? true : group.groupName.lowercased().contains(searchText.lowercased())
+        }) {$0.groupName.prefix(1)}
+        sections = groupsDictionary.map { Section(letter: String($0.key), names: $0.value) }
+        sections.sort { $0.letter < $1.letter }
+        vkApi.searchGroups(token: session.token, textField: searchText)
+        tableView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+        
+    }
+    
 }
 
 //MARK: - Delegate
