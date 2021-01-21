@@ -12,10 +12,8 @@ import Alamofire
 class VKApi {
     
     let baseUrl = "https://api.vk.com/method/"
-    let token = Session.shared.token
-    
    
-    func getFriends() {
+    func getFriends(token: String, completion: @escaping ([User]) -> Void) {
         let path = "friends.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -25,12 +23,17 @@ class VKApi {
         ]
         let url = baseUrl + path
         
-        AF.request(url, method: .get, parameters: parameters).responseJSON { response in
-            print(response)
+        AF.request(url, method: .get, parameters: parameters).responseData { response in
+            guard let data = response.value else {return}
+            let friends = try! JSONDecoder().decode(Response.self, from: data).response
+            print(friends)
+            completion(friends.userResponse)
+            
         }
+        
     }
     
-    func getPhotos() {
+    func getPhotos(token: String) {
         let path = "photos.getAll"
         let parameters: Parameters = [
             "access_token": token,
@@ -46,7 +49,7 @@ class VKApi {
         }
     }
     
-    func getGroups() {
+    func getGroups(token: String) {
         let path = "groups.get"
         let parameters: Parameters = [
             "access_token": token,
@@ -62,7 +65,7 @@ class VKApi {
         }
     }
     
-    func searchGroups(textField: String) {
+    func searchGroups(token: String, textField: String) {
         let path = "groups.search"
         let parameters: Parameters = [
             "access_token": token,

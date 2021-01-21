@@ -13,7 +13,8 @@ class AllGroupViewController: UIViewController {
     var sections = [Section<Group>]()
     var groups = GroupData.groupFactory()
     var vkApi = VKApi()
-   
+    let session = Session.shared
+    
     
     
     
@@ -84,7 +85,7 @@ extension AllGroupViewController: UISearchBarDelegate {
         }) {$0.groupName.prefix(1)}
         sections = groupsDictionary.map { Section(letter: String($0.key), names: $0.value) }
         sections.sort { $0.letter < $1.letter }
-        vkApi.searchGroups(textField: searchText)
+        vkApi.searchGroups(token: session.token, textField: searchText)
         tableView.reloadData()
     }
     

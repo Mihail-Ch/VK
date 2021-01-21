@@ -11,11 +11,9 @@ class FriendsViewController: UIViewController {
     
     //MARK: - Variables
     var sections = [Section<User>]()
-    var friends = UserData.friendsFactory()
     let vkApi = VKApi()
-    
-    
-    
+    var friends = [User]()
+    let session = Session.shared
     
     
     //MARK: - Outlet
@@ -38,7 +36,10 @@ class FriendsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkApi.getFriends()
+        vkApi.getFriends(token: session.token) { [weak self] friend in
+            self?.friends = friend
+            self?.tableView?.reloadData()
+        }
         title()
         updateBackItem()
         makeSortedSection()
@@ -58,7 +59,7 @@ class FriendsViewController: UIViewController {
     }
     
     func makeSortedSection() {
-        let friendsDictionary = Dictionary.init(grouping: friends) { $0.userName.prefix(1) }
+        let friendsDictionary = Dictionary.init(grouping: friends) { $0.lastName.prefix(1) }
         sections = friendsDictionary.map{ Section(letter: String($0.key), names: $0.value) }
         sections.sort { $0.letter < $1.letter }
     }
@@ -69,17 +70,20 @@ class FriendsViewController: UIViewController {
 extension FriendsViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
+       
         return sections.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return sections[section].letter.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
         let friend = sections[indexPath.section]
-        cell.configure(name: friend.names[indexPath.row].userName, avatar: UIImage(named: friend.names[indexPath.row].avatar)!)
+        cell.configure(name: friend.names[indexPath.row].lastName + friend.names[indexPath.row].firstName,
+             avatar: UIImage(named: friend.names[indexPath.row].avatar)!)
         return cell
     }
     
@@ -118,8 +122,8 @@ extension FriendsViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let friendsDictionary = Dictionary.init(grouping: friends.filter{ (user) -> Bool in
-            return searchText.isEmpty ? true : user.userName.lowercased().contains(searchText.lowercased())
-        }) {$0.userName.prefix(1)}
+            return searchText.isEmpty ? true : user.lastName.lowercased().contains(searchText.lowercased())
+        }) {$0.lastName.prefix(1)}
         sections = friendsDictionary.map { Section(letter: String($0.key), names: $0.value) }
         sections.sort { $0.letter < $1.letter }
         tableView.reloadData()

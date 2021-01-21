@@ -13,6 +13,7 @@ class MyGroupViewController: UIViewController {
     var sections = [Section<Group>]()
     var groups = [Group]()
     let vkApi = VKApi()
+    let session = Session.shared
     
     
 
@@ -36,7 +37,7 @@ class MyGroupViewController: UIViewController {
         title()
         makeSortedSection()
         tableView.register(TableViewCell.nib, forCellReuseIdentifier: TableViewCell.reuseId)
-        vkApi.getGroups()
+        vkApi.getGroups(token: session.token)
     }
     
     //MARK: - Navigation

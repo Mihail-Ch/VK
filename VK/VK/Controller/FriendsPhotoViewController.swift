@@ -11,7 +11,8 @@ class FriendsPhotoViewController: UIViewController {
     
     var photo: User?
     var vkApi = VKApi()
-   
+    let session = Session.shared
+    
     
     
     
@@ -24,7 +25,7 @@ class FriendsPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vkApi.getPhotos()
+        vkApi.getPhotos(token: session.token)
     }
 }
 
@@ -37,12 +38,12 @@ extension FriendsPhotoViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photo!.userPhoto.count
+        return photo!.avatar.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as! PhotoCollectionViewCell
-        cell.userPhoto.image = UIImage(named: photo!.userPhoto[indexPath.row])
+       // cell.userPhoto.image = UIImage(named: photo!.avatar[indexPath.row])
         return cell
     }
 }
