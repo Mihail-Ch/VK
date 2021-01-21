@@ -10,6 +10,10 @@ import UIKit
 class FriendsPhotoViewController: UIViewController {
     
     var photo: User?
+    var vkApi = VKApi()
+   
+    
+    
     
     @IBOutlet weak var collectionView: UICollectionView! {
         didSet {
@@ -20,6 +24,7 @@ class FriendsPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        vkApi.getPhotos()
     }
 }
 
