@@ -27,8 +27,8 @@ class AllGroupViewController: UIViewController {
     }
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            tableView.dataSource = self
-            tableView.delegate = self
+           tableView.dataSource = self
+           tableView.delegate = self
         }
     }
     
