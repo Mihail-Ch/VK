@@ -9,48 +9,39 @@ import UIKit
 
 class PhotosViewController: UIViewController {
     
-    lazy var collectionView: UICollectionView = {
+    lazy var vkApi = VKApi()
+    
+    private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
-        let width = (view.bounds.size.width / 2) - 10
-        layout.itemSize = CGSize(width: width, height: width - 30)
         let collecitonView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collecitonView.translatesAutoresizingMaskIntoConstraints = false
         collecitonView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.reuseId)
-        collecitonView.dataSource = self
-        collecitonView.delegate = self
         return collecitonView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "Фото"
         view.addSubview(collectionView)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        vkApi.getJSON(get: .myPhoto)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.frame = view.bounds
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+//MARK: - DataSource
 
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 60
     }
     
     
@@ -63,6 +54,25 @@ extension PhotosViewController: UICollectionViewDataSource {
     
 }
 
-extension PhotosViewController: UICollectionViewDelegate {
+//MARK: - DelegateFlowLayout
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.size.width / 2) - 2
+        let height = width - 30
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
 }

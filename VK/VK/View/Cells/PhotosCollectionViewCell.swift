@@ -11,7 +11,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     
     static let reuseId = "photosCollectionViewCell"
     
-    lazy var photoImage: UIImageView = {
+    private let photoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill

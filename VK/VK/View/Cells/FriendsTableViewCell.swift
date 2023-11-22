@@ -176,6 +176,14 @@ class FriendsTableViewCell: UITableViewCell {
             
         ])
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        avatarImage.image = nil
+        fullNameLabel.text = nil
+        descriptionUser.text = nil
+    }
   
 
     override func setSelected(_ selected: Bool, animated: Bool) {

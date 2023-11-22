@@ -11,7 +11,7 @@ class ChatTextTableViewCell: UITableViewCell {
 
     static let reuseId = "chatTableViewCell"
     
-    lazy var textChat: UILabel = {
+    private let textChat: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -50,12 +50,14 @@ class ChatTextTableViewCell: UITableViewCell {
         textChat.textColor = .darkGray
     }
     
-    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        textChat.text = nil
+    }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
 
 }

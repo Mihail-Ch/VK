@@ -9,12 +9,12 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    lazy var scrollView = UIScrollView()
-    lazy var imageLogin = UIImageView()
-    lazy var titleVK = UILabel()
-    lazy var loginTextField = UITextField()
-    lazy var passwordTextField = UITextField()
-    lazy var loginButton = UIButton(type: .system)
+    private let scrollView = UIScrollView()
+    private let imageLogin = UIImageView()
+    private let titleVK = UILabel()
+    private let loginTextField = UITextField()
+    private let passwordTextField = UITextField()
+    private let loginButton = UIButton(type: .system)
     
     
     //MARK: - Live Cicle
@@ -25,8 +25,6 @@ class LoginViewController: UIViewController {
         addUI()
         createUI()
         hideKeyboardGesture()
-        loginButton.addTarget(self, action: #selector(pressButtonLogin), for: .touchUpInside)
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,6 +38,12 @@ class LoginViewController: UIViewController {
                                                selector: #selector(self.keyboardWillBeHidden(notification:)),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        loginButton.addTarget(self, action: #selector(pressButtonLogin), for: .touchUpInside)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,6 +75,7 @@ class LoginViewController: UIViewController {
     
     private func showNextControllers() {
         let tabBar = UITabBarController()
+        tabBar.navigationItem.hidesBackButton = true
         let friendsController = UINavigationController(rootViewController: FriendsViewController())
         let groupsController = UINavigationController(rootViewController: GroupsViewController())
         let photoController = UINavigationController(rootViewController: PhotosViewController())
@@ -87,8 +92,7 @@ class LoginViewController: UIViewController {
         for x in 0..<images.count {
             items[x].image = UIImage(systemName: images[x])
         }
-        tabBar.modalPresentationStyle = .fullScreen
-        present(tabBar, animated: true)
+        self.navigationController?.pushViewController(tabBar, animated: true)
     }
     
     

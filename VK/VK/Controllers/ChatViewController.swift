@@ -9,19 +9,20 @@ import UIKit
 
 class ChatViewController: UIViewController {
     
-    lazy var tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ChatTextTableViewCell.self, forCellReuseIdentifier: ChatTextTableViewCell.reuseId)
-        tableView.dataSource = self
-        tableView.delegate = self
         return tableView
     }()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Сообщения"
         view.addSubview(tableView)
+        tableView.dataSource = self
+        tableView.delegate = self
     }
     
     override func viewDidLayoutSubviews() {

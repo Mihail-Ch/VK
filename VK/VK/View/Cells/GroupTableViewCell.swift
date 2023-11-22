@@ -98,6 +98,12 @@ class GroupTableViewCell: UITableViewCell {
         
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        avatarGroupImage.image = nil
+        titleLabelGroup.text = nil
+        descriptionGroup.text = nil
+    }
     
     override func layoutIfNeeded() {
         super.layoutIfNeeded()

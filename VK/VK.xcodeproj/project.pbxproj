@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		03194D392B0BB2B500E7BB92 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03194D382B0BB2B500E7BB92 /* ChatViewController.swift */; };
 		03194D3B2B0BB33600E7BB92 /* ChatTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03194D3A2B0BB33600E7BB92 /* ChatTextTableViewCell.swift */; };
+		034D93402B0E2B1200699010 /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D933F2B0E2B1200699010 /* VKApi.swift */; };
 		03AA61E42B0B98C2003DCBB1 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */; };
 		03AA61E62B0B98D5003DCBB1 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */; };
 		03AA61E82B0B98E5003DCBB1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */; };
@@ -21,11 +22,14 @@
 		03FFA57D2B04F6750043861E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03FFA57C2B04F6750043861E /* Assets.xcassets */; };
 		03FFA5802B04F6750043861E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03FFA57E2B04F6750043861E /* LaunchScreen.storyboard */; };
 		03FFA58D2B04FD9D0043861E /* ExtensionColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFA58C2B04FD9D0043861E /* ExtensionColor.swift */; };
+		03FFBEFA2B0CFA3A00ECFDF3 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFBEF92B0CFA3A00ECFDF3 /* AuthorizationViewController.swift */; };
+		03FFBEFE2B0D00CE00ECFDF3 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FFBEFD2B0D00CE00ECFDF3 /* Session.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03194D382B0BB2B500E7BB92 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		03194D3A2B0BB33600E7BB92 /* ChatTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextTableViewCell.swift; sourceTree = "<group>"; };
+		034D933F2B0E2B1200699010 /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
 		03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +44,8 @@
 		03FFA57F2B04F6750043861E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		03FFA5812B04F6750043861E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		03FFA58C2B04FD9D0043861E /* ExtensionColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionColor.swift; sourceTree = "<group>"; };
+		03FFBEF92B0CFA3A00ECFDF3 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		03FFBEFD2B0D00CE00ECFDF3 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,7 @@
 		03FFA5722B04F6720043861E /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				03FFBEFF2B0D079000ECFDF3 /* Network */,
 				03AA61F32B0B9F26003DCBB1 /* View */,
 				03FFA58B2B04FD6F0043861E /* Helpers */,
 				03FFA5872B04FA000043861E /* Controllers */,
@@ -106,10 +113,11 @@
 		03FFA5872B04FA000043861E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */,
+				03FFBEF92B0CFA3A00ECFDF3 /* AuthorizationViewController.swift */,
 				03FFA5772B04F6720043861E /* LoginViewController.swift */,
-				03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */,
+				03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */,
 				03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */,
+				03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */,
 				03194D382B0BB2B500E7BB92 /* ChatViewController.swift */,
 			);
 			path = Controllers;
@@ -119,8 +127,17 @@
 			isa = PBXGroup;
 			children = (
 				03FFA58C2B04FD9D0043861E /* ExtensionColor.swift */,
+				03FFBEFD2B0D00CE00ECFDF3 /* Session.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		03FFBEFF2B0D079000ECFDF3 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				034D933F2B0E2B1200699010 /* VKApi.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,11 +210,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034D93402B0E2B1200699010 /* VKApi.swift in Sources */,
+				03FFBEFE2B0D00CE00ECFDF3 /* Session.swift in Sources */,
 				03AA61F92B0B9FF7003DCBB1 /* GroupTableViewCell.swift in Sources */,
 				03AA61FB2B0BA04B003DCBB1 /* PhotosCollectionViewCell.swift in Sources */,
 				03194D392B0BB2B500E7BB92 /* ChatViewController.swift in Sources */,
 				03AA61E62B0B98D5003DCBB1 /* GroupsViewController.swift in Sources */,
 				03AA61E82B0B98E5003DCBB1 /* PhotosViewController.swift in Sources */,
+				03FFBEFA2B0CFA3A00ECFDF3 /* AuthorizationViewController.swift in Sources */,
 				03FFA5782B04F6720043861E /* LoginViewController.swift in Sources */,
 				03AA61F72B0B9F6B003DCBB1 /* FriendsTableViewCell.swift in Sources */,
 				03FFA5742B04F6720043861E /* AppDelegate.swift in Sources */,
