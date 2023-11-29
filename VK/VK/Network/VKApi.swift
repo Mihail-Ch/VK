@@ -15,8 +15,7 @@ final class VKApi {
     enum ApiMethod {
         case friends
         case groups
-        case myPhoto
-        
+        case photos(id: Int)
         
         var path: String {
             switch self {
@@ -24,8 +23,8 @@ final class VKApi {
                 return "/method/friends.get"
             case .groups:
                 return "/method/groups.get"
-            case .myPhoto:
-                return "/method/photos.get"
+            case .photos:
+                return "/method/photos.getAll"
             }
         }
         
@@ -33,24 +32,25 @@ final class VKApi {
             switch self {
             case .friends:
                 return [
-                    "fields": "photo_50",
-                    "count": "10"
+                    "fields": "photo_50, city, online",
+                    "count": "120",
                 ]
             case .groups:
                 return [
                     "count": "10",
                     "extended": "1"
                 ]
-            case .myPhoto:
+            case .photos(let id):
                 return [
-                    "album_id": "profile",
-                    "count": "10"
+                    "owner_id": String(id)
                 ]
             }
         }
     }
     
-    private func request(_ method: ApiMethod) {
+    //MARK: - Request
+    
+    private func request(_ method: ApiMethod, complition: @escaping (Data?) -> Void ) {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
@@ -67,19 +67,63 @@ final class VKApi {
         
         components.queryItems = defaultQueryItems + methodQueryItems
         
-        guard let url = components.url else { return }
+        guard let url = components.url else {
+            complition(nil)
+            return
+        }
         print(url)
         let session = URLSession.shared
         let task = session.dataTask(with: url) { (data, response, error) in
-            guard let data = data else { return }
-            let json = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.fragmentsAllowed)
-            print(json as Any)
+            if let error = error {
+                print(error)
+            }
+            DispatchQueue.main.async {
+                complition(data)
+            }
         }
         task.resume()
     }
     
+    //MARK: Get Friend
     
-    func getJSON(get: ApiMethod) {
-        request(get)
+    func getFriends(complition: @escaping ([Friends]) -> Void) {
+        request(.friends) { [weak self] (data) in
+            guard let data = data else {return}
+            do {
+                let response = try JSONDecoder().decode(Response<Friends>.self, from: data).response.items
+                complition(response)
+            } catch {
+                print(error)
+            }
+        }
     }
+    
+    //MARK: Get Group
+   
+    func getGroups(complition: @escaping ([Groups]) -> Void) {
+        request(.groups) { [weak self] (data) in
+            guard let data = data else { return }
+            do {
+                let response = try JSONDecoder().decode(Response<Groups>.self, from: data).response.items
+                complition(response)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    //MARK: Get Photo
+    
+    func getPhoto(ownerId: Int, complition: @escaping([Photo]) -> Void) {
+        request(.photos(id: ownerId)) { [weak self] (data) in
+            guard let data = data else {return}
+            do {
+                let response = try JSONDecoder().decode(Response<Photo>.self, from: data).response.items
+                complition(response)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
 }

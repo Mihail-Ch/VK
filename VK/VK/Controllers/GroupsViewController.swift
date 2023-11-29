@@ -9,7 +9,9 @@ import UIKit
 
 class GroupsViewController: UIViewController {
     
+    private var groups: [Groups] = []
     lazy var vkApi = VKApi()
+    
     
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -26,7 +28,12 @@ class GroupsViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         
-        vkApi.getJSON(get: .groups)
+        vkApi.getGroups { [weak self] group in
+            self?.groups = group
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,13 +45,14 @@ class GroupsViewController: UIViewController {
 extension GroupsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return groups.count
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reuseId, for: indexPath) as? GroupTableViewCell else { return UITableViewCell() }
-        cell.configureCell(avatar: "logo", title: "ВКонтакте", description: "Social network")
+        let group = groups[indexPath.row]
+        cell.configureCell(avatar: group.avatar, title: group.name, description: nil)
         return cell
     }
  
@@ -53,6 +61,6 @@ extension GroupsViewController: UITableViewDataSource {
 extension GroupsViewController: UITableViewDelegate {
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 65
     }
 }

@@ -54,8 +54,8 @@ class GroupTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    func configureCell(avatar: String, title: String, description: String) {
-        self.avatarGroupImage.image = UIImage(named: avatar)
+    func configureCell(avatar: String, title: String, description: String?) {
+        self.avatarGroupImage.getPhoto(url: avatar)
         self.titleLabelGroup.text = title
         self.descriptionGroup.text = description
     }
@@ -72,7 +72,7 @@ class GroupTableViewCell: UITableViewCell {
             
             avatarGroupView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             avatarGroupView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            avatarGroupView.heightAnchor.constraint(equalToConstant: 60),
+            avatarGroupView.heightAnchor.constraint(equalToConstant: 50),
             avatarGroupView.widthAnchor.constraint(equalTo: avatarGroupView.heightAnchor, multiplier: 1/1),
             
             avatarGroupImage.centerYAnchor.constraint(equalTo: avatarGroupView.centerYAnchor),

@@ -10,6 +10,9 @@ import UIKit
 class PhotosViewController: UIViewController {
     
     lazy var vkApi = VKApi()
+    private let id = Session.shared
+    private var photo: [Photo] = []
+    
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -27,7 +30,12 @@ class PhotosViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        vkApi.getJSON(get: .myPhoto)
+        vkApi.getPhoto(ownerId: id.userId) { [weak self] photo in
+            self?.photo = photo
+            DispatchQueue.main.async {
+                self?.collectionView.reloadData()
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,13 +49,17 @@ class PhotosViewController: UIViewController {
 extension PhotosViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 60
+        return photo.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.reuseId, for: indexPath) as? PhotosCollectionViewCell else { return UICollectionViewCell() }
-        cell.configure(image: "sonoma")
+        let photo = photo[indexPath.row]
+        let photos = photo.sizes
+        for photo in photos {
+            cell.configure(image: photo.url)
+        }
         return cell
     }
     

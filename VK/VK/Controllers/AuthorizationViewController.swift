@@ -40,10 +40,10 @@ class AuthorizationViewController: UIViewController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "👉 - AppId"),
+            URLQueryItem(name: "client_id", value: "👉 - AppId"),//
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
-            URLQueryItem(name: "scope", value: "270342"),//8192 добавил для wall
+            URLQueryItem(name: "scope", value: "270342"),
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "v", value: "5.199")
         ]
@@ -57,12 +57,14 @@ class AuthorizationViewController: UIViewController {
         tabBar.navigationItem.hidesBackButton = true
         
         let friendsController = UINavigationController(rootViewController: FriendsViewController())
-        let groupsController = UINavigationController(rootViewController: GroupsViewController())
+        let groupsController =  UINavigationController(rootViewController: GroupsViewController())
         let photoController = UINavigationController(rootViewController: PhotosViewController())
-        
+
         friendsController.title = "Друзья"
         groupsController.title = "Группы"
         photoController.title = "Фото"
+        
+        tabBar.modalPresentationStyle = .fullScreen
         
         tabBar.setViewControllers([friendsController, groupsController, photoController], animated: true)
         
@@ -72,6 +74,7 @@ class AuthorizationViewController: UIViewController {
         for x in 0..<images.count {
             items[x].image = UIImage(systemName: images[x])
         }
+        
     }
 
 }
@@ -112,7 +115,8 @@ extension AuthorizationViewController: WKNavigationDelegate {
         Session.shared.token = token
         Session.shared.userId = userId
         
-        self.navigationController?.pushViewController(tabBar, animated: true)
+        present(tabBar, animated: true)
+
         decisionHandler(.cancel)
         webView.removeFromSuperview()
     }

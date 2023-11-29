@@ -9,6 +9,7 @@ import UIKit
 
 class FriendsViewController: UIViewController {
     
+    private var friends: [Friends] = []
     lazy var vkApi = VKApi()
     
     private let tableView: UITableView = {
@@ -25,32 +26,43 @@ class FriendsViewController: UIViewController {
         navigationController?.navigationItem.hidesBackButton = true
         tableView.dataSource = self
         tableView.delegate = self
-        
-        vkApi.getJSON(get: .friends)
+       
+        vkApi.getFriends { [weak self] friend in
+            self?.friends = friend
+            DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+            }
+        }
     }
-    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
     }
+   
 }
 
+
+//MARK: TableView DataSource
 
 extension FriendsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.reuseId, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
-        cell.configure(avatar: "logo", firstName: "В", lastName: "Контакте", year: "2122", region: "Mars")
+        let friend = friends[indexPath.row]
+        cell.configure(avatar: friend.avatar, firstName: friend.firstName, lastName: friend.lastName, city: friend.city?.title, online: friend.online)
+       
         return cell
     }
     
     
 }
+
+//MARK: TableView Delegate
 
 extension FriendsViewController: UITableViewDelegate {
     
@@ -59,7 +71,7 @@ extension FriendsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75
+        return 65
     }
 }
 

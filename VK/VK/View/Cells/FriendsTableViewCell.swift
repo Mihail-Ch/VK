@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class FriendsTableViewCell: UITableViewCell {
 
     static let reuseId = "friendsTableViewCell"
@@ -26,6 +27,13 @@ class FriendsTableViewCell: UITableViewCell {
         image.backgroundColor = .green
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
+        return image
+    }()
+    
+    private let online: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
@@ -79,27 +87,35 @@ class FriendsTableViewCell: UITableViewCell {
     
     //MARK: - @objk & func
     
-    func configure(avatar: String?, firstName: String?, lastName: String?, year: String?, region: String?) {
+    func configure(avatar: String?, firstName: String?, lastName: String?, city: String?, online: Int) {
         if let avatar = avatar {
-            self.avatarImage.image = UIImage(named: avatar)
+            self.avatarImage.getPhoto(url: avatar)
         }
-        
         self.fullNameLabel.text = configureFullName(firstName: firstName, lastName: lastName)
-        self.descriptionUser.text = configureDescriptionUser(year: year, region: region)
+        
+        if let city = city {
+            self.descriptionUser.text = city
+        }
+        takeOnline(status: online)
         
     }
     
-    private func configureDescriptionUser(year: String?, region: String?) -> String? {
-        "\(year ?? "") \(region ?? "")"
+    private func takeOnline(status: Int) {
+        if status == 1 {
+            self.online.image = UIImage(named: "online")
+        }
     }
     
     private func configureFullName(firstName: String?, lastName: String?) -> String? {
-         "\(firstName ?? "") \(lastName ?? "")"
+             "\(firstName ?? "") \(lastName ?? "")"
     }
+
+    
     
     private func createUI() {
         contentView.addSubview(avatarView)
         contentView.addSubview(avatarImage)
+        contentView.addSubview(online)
         
         stackVerticalName.addArrangedSubview(fullNameLabel)
         stackVerticalName.addArrangedSubview(descriptionUser)
@@ -117,7 +133,7 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     @objc
-    private func pressMessageButton() {
+    private func pressMessageButton(_ sender: Any) {
         print("----- I'm writing a message -----")
     }
     
@@ -155,13 +171,18 @@ class FriendsTableViewCell: UITableViewCell {
             
             avatarView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            avatarView.heightAnchor.constraint(equalToConstant: 60),
+            avatarView.heightAnchor.constraint(equalToConstant: 50),
             avatarView.widthAnchor.constraint(equalTo: avatarView.heightAnchor, multiplier: 1/1),
             
             avatarImage.centerYAnchor.constraint(equalTo: avatarView.centerYAnchor),
             avatarImage.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor),
             avatarImage.heightAnchor.constraint(equalTo: avatarView.heightAnchor),
             avatarImage.widthAnchor.constraint(equalTo: avatarView.widthAnchor),
+            
+            online.trailingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 3),
+            online.bottomAnchor.constraint(equalTo: avatarImage.bottomAnchor, constant: 3),
+            online.widthAnchor.constraint(equalToConstant: 15),
+            online.heightAnchor.constraint(equalToConstant: 15),
             
             stackVerticalName.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             stackVerticalName.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 10),
@@ -183,13 +204,14 @@ class FriendsTableViewCell: UITableViewCell {
         avatarImage.image = nil
         fullNameLabel.text = nil
         descriptionUser.text = nil
+        online.image = nil
     }
   
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        
     }
 
 }

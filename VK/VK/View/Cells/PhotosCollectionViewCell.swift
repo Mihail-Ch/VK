@@ -44,7 +44,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(image: String) {
-        photoImage.image = UIImage(named: image)
+        self.photoImage.getPhoto(url: image)
     }
     
     override func prepareForReuse() {
