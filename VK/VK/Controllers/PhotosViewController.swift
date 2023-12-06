@@ -32,9 +32,7 @@ class PhotosViewController: UIViewController {
         
         vkApi.getPhoto(ownerId: id.userId) { [weak self] photo in
             self?.photo = photo
-            DispatchQueue.main.async {
-                self?.collectionView.reloadData()
-            }
+            self?.collectionView.reloadData()
         }
     }
     

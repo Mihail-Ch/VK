@@ -8,8 +8,11 @@
 import UIKit
 
 
+
 class FriendsTableViewCell: UITableViewCell {
 
+    var button: (() -> Void)?
+    
     static let reuseId = "friendsTableViewCell"
     
     private let avatarView: UIView = {
@@ -134,8 +137,11 @@ class FriendsTableViewCell: UITableViewCell {
     
     @objc
     private func pressMessageButton(_ sender: Any) {
+        button?()
         print("----- I'm writing a message -----")
     }
+       
+    
     
     //MARK: - Init
     

@@ -54,7 +54,7 @@ class GroupTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    func configureCell(avatar: String, title: String, description: String?) {
+    func configureCell(avatar: String, title: String, description: String) {
         self.avatarGroupImage.getPhoto(url: avatar)
         self.titleLabelGroup.text = title
         self.descriptionGroup.text = description

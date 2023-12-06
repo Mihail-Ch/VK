@@ -40,7 +40,7 @@ class AuthorizationViewController: UIViewController {
         urlComponents.host = "oauth.vk.com"
         urlComponents.path = "/authorize"
         urlComponents.queryItems = [
-            URLQueryItem(name: "client_id", value: "👉 - AppId"),//
+            URLQueryItem(name: "client_id", value: "7727721"), //👉 - AppId
             URLQueryItem(name: "display", value: "mobile"),
             URLQueryItem(name: "redirect_uri", value: "https://oauth.vk.com/blank.html"),
             URLQueryItem(name: "scope", value: "270342"),
@@ -57,9 +57,11 @@ class AuthorizationViewController: UIViewController {
         tabBar.navigationItem.hidesBackButton = true
         
         let friendsController = UINavigationController(rootViewController: FriendsViewController())
-        let groupsController =  UINavigationController(rootViewController: GroupsViewController())
+        let groupsController = UINavigationController(rootViewController: GroupsViewController())
         let photoController = UINavigationController(rootViewController: PhotosViewController())
-
+        
+        
+        
         friendsController.title = "Друзья"
         groupsController.title = "Группы"
         photoController.title = "Фото"
@@ -74,7 +76,9 @@ class AuthorizationViewController: UIViewController {
         for x in 0..<images.count {
             items[x].image = UIImage(systemName: images[x])
         }
+       
         
+
     }
 
 }
@@ -116,7 +120,7 @@ extension AuthorizationViewController: WKNavigationDelegate {
         Session.shared.userId = userId
         
         present(tabBar, animated: true)
-
+        
         decisionHandler(.cancel)
         webView.removeFromSuperview()
     }

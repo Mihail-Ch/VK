@@ -14,6 +14,8 @@
 		033B9EB02B14D29500806675 /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033B9EAF2B14D29500806675 /* Groups.swift */; };
 		033B9EB22B14D95700806675 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 033B9EB12B14D95700806675 /* Photo.swift */; };
 		034D93402B0E2B1200699010 /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D933F2B0E2B1200699010 /* VKApi.swift */; };
+		03569BA62B1F7C9100D33B51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03569BA52B1F7C9100D33B51 /* User.swift */; };
+		036EA0EC2B1DB5D6009AF8A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036EA0EB2B1DB5D6009AF8A0 /* ProfileViewController.swift */; };
 		03AA61E42B0B98C2003DCBB1 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */; };
 		03AA61E62B0B98D5003DCBB1 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */; };
 		03AA61E82B0B98E5003DCBB1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */; };
@@ -39,6 +41,8 @@
 		033B9EAF2B14D29500806675 /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
 		033B9EB12B14D95700806675 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		034D933F2B0E2B1200699010 /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		03569BA52B1F7C9100D33B51 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		036EA0EB2B1DB5D6009AF8A0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 				033B9EA72B14806B00806675 /* Friends.swift */,
 				033B9EAF2B14D29500806675 /* Groups.swift */,
 				033B9EB12B14D95700806675 /* Photo.swift */,
+				03569BA52B1F7C9100D33B51 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -135,11 +140,12 @@
 			isa = PBXGroup;
 			children = (
 				03FFBEF92B0CFA3A00ECFDF3 /* AuthorizationViewController.swift */,
-				03FFA5772B04F6720043861E /* LoginViewController.swift */,
 				03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */,
 				03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */,
 				03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */,
 				03194D382B0BB2B500E7BB92 /* ChatViewController.swift */,
+				036EA0EB2B1DB5D6009AF8A0 /* ProfileViewController.swift */,
+				03FFA5772B04F6720043861E /* LoginViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -243,6 +249,7 @@
 				03194D392B0BB2B500E7BB92 /* ChatViewController.swift in Sources */,
 				03AA61E62B0B98D5003DCBB1 /* GroupsViewController.swift in Sources */,
 				03AA61E82B0B98E5003DCBB1 /* PhotosViewController.swift in Sources */,
+				03569BA62B1F7C9100D33B51 /* User.swift in Sources */,
 				03FFBEFA2B0CFA3A00ECFDF3 /* AuthorizationViewController.swift in Sources */,
 				03FFA5782B04F6720043861E /* LoginViewController.swift in Sources */,
 				03AA61F72B0B9F6B003DCBB1 /* FriendsTableViewCell.swift in Sources */,
@@ -251,6 +258,7 @@
 				033B9EB02B14D29500806675 /* Groups.swift in Sources */,
 				03FFA5762B04F6720043861E /* SceneDelegate.swift in Sources */,
 				03194D3B2B0BB33600E7BB92 /* ChatTextTableViewCell.swift in Sources */,
+				036EA0EC2B1DB5D6009AF8A0 /* ProfileViewController.swift in Sources */,
 				03AA61E42B0B98C2003DCBB1 /* FriendsViewController.swift in Sources */,
 				03FFA58D2B04FD9D0043861E /* ExtensionColor.swift in Sources */,
 			);
@@ -401,8 +409,7 @@
 				INFOPLIST_FILE = VK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -428,8 +435,7 @@
 				INFOPLIST_FILE = VK/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

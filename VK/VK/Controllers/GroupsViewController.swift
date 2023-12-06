@@ -30,9 +30,7 @@ class GroupsViewController: UIViewController {
         
         vkApi.getGroups { [weak self] group in
             self?.groups = group
-            DispatchQueue.main.async {
-                self?.tableView.reloadData()
-            }
+            self?.tableView.reloadData()
         }
     }
     
@@ -52,7 +50,7 @@ extension GroupsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: GroupTableViewCell.reuseId, for: indexPath) as? GroupTableViewCell else { return UITableViewCell() }
         let group = groups[indexPath.row]
-        cell.configureCell(avatar: group.avatar, title: group.name, description: nil)
+        cell.configureCell(avatar: group.avatar, title: group.name, description: group.description)
         return cell
     }
  

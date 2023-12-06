@@ -16,6 +16,7 @@ final class VKApi {
         case friends
         case groups
         case photos(id: Int)
+        case user
         
         var path: String {
             switch self {
@@ -25,6 +26,8 @@ final class VKApi {
                 return "/method/groups.get"
             case .photos:
                 return "/method/photos.getAll"
+            case .user:
+                return "/method/users.get"
             }
         }
         
@@ -38,12 +41,15 @@ final class VKApi {
             case .groups:
                 return [
                     "count": "10",
+                    "fields": "description",
                     "extended": "1"
                 ]
             case .photos(let id):
                 return [
                     "owner_id": String(id)
                 ]
+            case .user:
+                return ["fields": "photo_100"]
             }
         }
     }
@@ -84,10 +90,27 @@ final class VKApi {
         task.resume()
     }
     
+    //MARK: Get User
+    
+    func getUser(complition: @escaping(User) -> Void) {
+        request(.user) { data in
+            guard let data = data else {return}
+            do {
+                let response = try JSONDecoder().decode(ResponseUser<User>.self, from: data)
+                guard let profile = response.response.first else {
+                    return
+                }
+                complition(profile)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
     //MARK: Get Friend
     
     func getFriends(complition: @escaping ([Friends]) -> Void) {
-        request(.friends) { [weak self] (data) in
+        request(.friends) { (data) in
             guard let data = data else {return}
             do {
                 let response = try JSONDecoder().decode(Response<Friends>.self, from: data).response.items
@@ -101,7 +124,7 @@ final class VKApi {
     //MARK: Get Group
    
     func getGroups(complition: @escaping ([Groups]) -> Void) {
-        request(.groups) { [weak self] (data) in
+        request(.groups) { (data) in
             guard let data = data else { return }
             do {
                 let response = try JSONDecoder().decode(Response<Groups>.self, from: data).response.items
@@ -115,7 +138,7 @@ final class VKApi {
     //MARK: Get Photo
     
     func getPhoto(ownerId: Int, complition: @escaping([Photo]) -> Void) {
-        request(.photos(id: ownerId)) { [weak self] (data) in
+        request(.photos(id: ownerId)) { (data) in
             guard let data = data else {return}
             do {
                 let response = try JSONDecoder().decode(Response<Photo>.self, from: data).response.items

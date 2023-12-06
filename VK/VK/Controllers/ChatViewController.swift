@@ -9,6 +9,7 @@ import UIKit
 
 class ChatViewController: UIViewController {
     
+    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -23,6 +24,8 @@ class ChatViewController: UIViewController {
         view.addSubview(tableView)
         tableView.dataSource = self
         tableView.delegate = self
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,6 +45,7 @@ extension ChatViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ChatTextTableViewCell.reuseId, for: indexPath) as? ChatTextTableViewCell else { return UITableViewCell() }
+        
         if indexPath.row % 2 == 0 {
             cell.configureLeft()
         } else {

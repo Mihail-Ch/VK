@@ -17,7 +17,6 @@ struct ResponseObject<T: Decodable>: Decodable {
     var items: [T]
     
     enum CodingKeys: String, CodingKey {
-      //  case response
         case count
         case items
     }
