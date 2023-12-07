@@ -10,7 +10,7 @@ struct Groups: Decodable {
     var id: Int
     var name: String
     var avatar: String
-    var description: String
+    var description: String //caption --> this name will for coreData
     
     enum CodingKeys: String, CodingKey {
         case id

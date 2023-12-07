@@ -25,6 +25,7 @@ class AuthorizationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
+      //  view.backgroundColor = Theme.currentTheme.backgroundColor
         setupTabBar()
         openScreenAuthorization()
     }
@@ -55,12 +56,10 @@ class AuthorizationViewController: UIViewController {
     
     private func setupTabBar() {
         tabBar.navigationItem.hidesBackButton = true
-        
+  
         let friendsController = UINavigationController(rootViewController: FriendsViewController())
         let groupsController = UINavigationController(rootViewController: GroupsViewController())
         let photoController = UINavigationController(rootViewController: PhotosViewController())
-        
-        
         
         friendsController.title = "Друзья"
         groupsController.title = "Группы"
@@ -76,8 +75,6 @@ class AuthorizationViewController: UIViewController {
         for x in 0..<images.count {
             items[x].image = UIImage(systemName: images[x])
         }
-       
-        
 
     }
 

@@ -10,6 +10,25 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private var vkApi = VKApi()
+    private var isTap: Bool = false
+    private var isUserProfile: Bool
+    
+    init(name: String? = nil, photo: UIImage? = nil, isUserProfile: Bool) {
+        self.isUserProfile = isUserProfile
+        super.init(nibName: nil, bundle: nil)
+        imageProfile.image = photo
+        fullNameLabel.text = name
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    var viewTheme: ThemeView = {
+        let view = ThemeView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     private let viewProfile: UIView = {
         let view = UIView()
@@ -37,18 +56,67 @@ class ProfileViewController: UIViewController {
         return label
     }()
 
+    private let changeColor: UIButton = {
+        let button = UIButton(type: .system)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Сменить цвет", for: .normal)
+        button.backgroundColor = UIColor(hex: "457EDA")
+        button.tintColor = .white
+        button.layer.cornerRadius = 7
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Профиль"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        navigationController?.navigationBar.backgroundColor = Theme.currentTheme.backgroundColor
         view.addSubview(viewProfile)
         view.addSubview(imageProfile)
         view.addSubview(fullNameLabel)
+        view.addSubview(viewTheme)
+        changeColor.addTarget(self, action: #selector(buttonChangeColor), for: .touchUpInside)
         setupShadow()
-        createConstraints() 
-       
+        createConstraints()
         vkApi.getUser { [weak self] user in
             self?.configure(avatar: user.avatar, firstName: user.firstName, lastName: user.lastName)
+        }
+        
+        if isUserProfile {
+            vkApi.getUser { [weak self] user in
+                self?.updateData(model: user)
+            }
+        } else {
+            viewTheme.isHidden = true
+        }
+    }
+    
+    //MARK: Method && @objc
+    
+    func updateData(model: User?) {
+        guard let model = model else {
+            return
+        }
+        if let url = URL(string: model.avatar ?? ""),
+           let data = try? Data(contentsOf: url) {
+            DispatchQueue.main.async {
+                self.imageProfile.image = UIImage(data: data)
+            }
+        }
+        DispatchQueue.main.async {
+            self.configureFullName(firstName: model.firstName, lastName: model.lastName)
+        }
+    }
+    
+    @objc private func buttonChangeColor() {
+        isTap.toggle()
+        if isTap {
+            Theme.currentTheme = RedBackground()
+            view.backgroundColor = Theme.currentTheme.backgroundColor
+        } else {
+            Theme.currentTheme = SystemBackground()
+            view.backgroundColor = Theme.currentTheme.backgroundColor
+
         }
     }
     
@@ -71,6 +139,8 @@ class ProfileViewController: UIViewController {
         viewProfile.layer.shadowOffset = CGSize.zero
     }
     
+    //MARK: - Create Constraint
+    
     private func createConstraints() {
         let avatarSize = view.bounds.size.width / 3
         viewProfile.layer.cornerRadius = avatarSize / 2
@@ -91,9 +161,25 @@ class ProfileViewController: UIViewController {
             fullNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             fullNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10),
             fullNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            
+            viewTheme.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 20),
+            viewTheme.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            viewTheme.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            viewTheme.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -300),
+            //viewProfile.heightAnchor.constraint(equalToConstant: 40),
+            
         ])
             
     }
 }
 
 
+extension ProfileViewController: ThemeViewProtocol {
+    func updateColor() {
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        fullNameLabel.textColor = Theme.currentTheme.textColor
+    }
+    
+    
+    
+}

@@ -12,6 +12,7 @@ class ChatViewController: UIViewController {
     
     private let tableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(ChatTextTableViewCell.self, forCellReuseIdentifier: ChatTextTableViewCell.reuseId)
         return tableView
@@ -20,6 +21,8 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        navigationController?.navigationBar.backgroundColor = Theme.currentTheme.backgroundColor
         title = "Сообщения"
         view.addSubview(tableView)
         tableView.dataSource = self

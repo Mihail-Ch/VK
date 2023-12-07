@@ -17,12 +17,14 @@ class GroupsViewController: UIViewController {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(GroupTableViewCell.self, forCellReuseIdentifier: GroupTableViewCell.reuseId)
-        
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
+        navigationController?.navigationBar.backgroundColor = Theme.currentTheme.backgroundColor
         title = "Группы"
         view.addSubview(tableView)
         tableView.dataSource = self

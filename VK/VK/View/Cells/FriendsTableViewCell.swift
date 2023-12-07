@@ -11,7 +11,8 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
 
-    var button: (() -> Void)?
+    var buttonChat: (() -> Void)?
+    var tap: ((String?, UIImage?) -> Void)?
     
     static let reuseId = "friendsTableViewCell"
     
@@ -43,6 +44,7 @@ class FriendsTableViewCell: UITableViewCell {
     private let fullNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = Theme.currentTheme.textColor
         return label
     }()
     
@@ -88,7 +90,28 @@ class FriendsTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    //MARK: - Init
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        //    self.contentView.backgroundColor = Theme.currentTheme.backgroundColor
+        createUI()
+        phoneButton.addTarget(self, action: #selector(pressPhoneButton), for: .touchUpInside)
+        messageButton.addTarget(self, action: #selector(pressMessageButton), for: .touchUpInside)
+        let recongnizer = UITapGestureRecognizer(target: self, action: #selector(cellClick))
+        addGestureRecognizer(recongnizer)
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+       
     //MARK: - @objk & func
+    
+    @objc private func cellClick() {
+        tap?(fullNameLabel.text, avatarImage.image)
+    }
     
     func configure(avatar: String?, firstName: String?, lastName: String?, city: String?, online: Int) {
         if let avatar = avatar {
@@ -137,26 +160,13 @@ class FriendsTableViewCell: UITableViewCell {
     
     @objc
     private func pressMessageButton(_ sender: Any) {
-        button?()
+        buttonChat?()
         print("----- I'm writing a message -----")
     }
        
     
     
-    //MARK: - Init
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        createUI()
-        phoneButton.addTarget(self, action: #selector(pressPhoneButton), for: .touchUpInside)
-        messageButton.addTarget(self, action: #selector(pressMessageButton), for: .touchUpInside)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+   
     //MARK: - Layout
     
     override func layoutIfNeeded() {

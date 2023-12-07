@@ -33,6 +33,7 @@ class ChatTextTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = Theme.currentTheme.backgroundColor
         createUI()
     }
     

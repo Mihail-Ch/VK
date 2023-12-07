@@ -12,6 +12,10 @@ final class VKApi {
     
     let session = Session.shared
     
+    enum NetworkError: Error {
+        case dataError
+    }
+    
     enum ApiMethod {
         case friends
         case groups
@@ -109,14 +113,17 @@ final class VKApi {
     
     //MARK: Get Friend
     
-    func getFriends(complition: @escaping ([Friends]) -> Void) {
+    func getFriends(complition: @escaping (Result<[Friends], Error>) -> Void) {
         request(.friends) { (data) in
-            guard let data = data else {return}
+            guard let data = data else {
+                complition(.failure(Error.self as! Error))
+                return
+            }
             do {
                 let response = try JSONDecoder().decode(Response<Friends>.self, from: data).response.items
-                complition(response)
+                complition(.success(response))
             } catch {
-                print(error)
+                complition(.failure(error))
             }
         }
     }

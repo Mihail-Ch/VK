@@ -11,29 +11,44 @@ class FriendsViewController: UIViewController {
     
     private var friends: [Friends] = []
     lazy var vkApi = VKApi()
+    private var fileCash = FileCache()
    
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(FriendsTableViewCell.self, forCellReuseIdentifier: FriendsTableViewCell.reuseId)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(update), for: .valueChanged)
         return tableView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
+        friends = fileCash.fetchFriends()
         title = "Друзья"
         view.addSubview(tableView)
+        tableView.backgroundColor = Theme.currentTheme.backgroundColor
+        navigationController?.navigationBar.backgroundColor = Theme.currentTheme.backgroundColor
         setupView()
       
         tableView.dataSource = self
         tableView.delegate = self
        
-        vkApi.getFriends { [weak self] friend in
-            self?.friends = friend
-            self?.tableView.reloadData()
-            
+        vkApi.getFriends { [weak self] result in
+            switch result {
+            case .success(let friends):
+                self?.friends = friends
+                self?.tableView.reloadData()
+            case .failure(_):
+                self?.friends = self?.fileCash.fetchFriends() ?? []
+                self?.showAlert()
+            }
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = Theme.currentTheme.backgroundColor
     }
     
     override func viewDidLayoutSubviews() {
@@ -41,23 +56,37 @@ class FriendsViewController: UIViewController {
         tableView.frame = view.bounds
     }
     
+    
     private func setupView() {
-        
         let profileRightButton = createCustomButton(imageName: "person", selector: #selector(clickButton))
-        
         self.navigationItem.rightBarButtonItem = profileRightButton
-        
     }
+
     
     @objc func clickButton() {
-        let profileController = ProfileViewController()
+        let profileController = ProfileViewController(isUserProfile: true)
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         animation.type = .fade
         animation.duration = 1.5
         navigationController?.view.layer.add(animation, forKey: nil)
         self.navigationController?.pushViewController(profileController, animated: false)
-        
+    }
+    
+    @objc func update() {
+        vkApi.getFriends { [weak self] result in
+            switch result {
+            case .success(let friends):
+                self?.friends = friends
+                self?.tableView.reloadData()
+            case .failure(_):
+                self?.friends = self?.fileCash.fetchFriends() ?? []
+                self?.showAlert()
+            }
+        }
+        DispatchQueue.main.async {
+            self.tableView.refreshControl?.endRefreshing()
+        }
     }
    
 }
@@ -92,15 +121,15 @@ extension FriendsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FriendsTableViewCell.reuseId, for: indexPath) as? FriendsTableViewCell else { return UITableViewCell() }
         let friend = friends[indexPath.row]
         cell.configure(avatar: friend.avatar, firstName: friend.firstName, lastName: friend.lastName, city: friend.city?.title, online: friend.online)
-        cell.button = {
+        cell.buttonChat = {
             let chatController = ChatViewController()
             self.navigationController?.pushViewController(chatController, animated: true)
         }
-       
+        cell.tap = { [weak self] text, photo in
+            self?.navigationController?.pushViewController(ProfileViewController(name: text, photo: photo, isUserProfile: false), animated: true)
+        }
         return cell
     }
-    
-    
 }
 
 //MARK: TableView Delegate
@@ -117,3 +146,13 @@ extension FriendsViewController: UITableViewDelegate {
 }
 
 
+extension FriendsViewController {
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Не удалось получить данные",
+                                      message: "Данные загружены из последнего обновления",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}

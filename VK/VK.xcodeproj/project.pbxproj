@@ -16,6 +16,10 @@
 		034D93402B0E2B1200699010 /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034D933F2B0E2B1200699010 /* VKApi.swift */; };
 		03569BA62B1F7C9100D33B51 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03569BA52B1F7C9100D33B51 /* User.swift */; };
 		036EA0EC2B1DB5D6009AF8A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036EA0EB2B1DB5D6009AF8A0 /* ProfileViewController.swift */; };
+		039A89632B218FE600A5D081 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039A89622B218FE600A5D081 /* Theme.swift */; };
+		039A89672B21BB0400A5D081 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039A89662B21BB0400A5D081 /* ThemeView.swift */; };
+		039A896E2B21F3C300A5D081 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 039A896C2B21F3C300A5D081 /* DataModel.xcdatamodeld */; };
+		039A89702B21F53700A5D081 /* FileCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039A896F2B21F53700A5D081 /* FileCache.swift */; };
 		03AA61E42B0B98C2003DCBB1 /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */; };
 		03AA61E62B0B98D5003DCBB1 /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */; };
 		03AA61E82B0B98E5003DCBB1 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */; };
@@ -43,6 +47,10 @@
 		034D933F2B0E2B1200699010 /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
 		03569BA52B1F7C9100D33B51 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		036EA0EB2B1DB5D6009AF8A0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		039A89622B218FE600A5D081 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		039A89662B21BB0400A5D081 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		039A896D2B21F3C300A5D081 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		039A896F2B21F53700A5D081 /* FileCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCache.swift; sourceTree = "<group>"; };
 		03AA61E32B0B98C2003DCBB1 /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
 		03AA61E52B0B98D5003DCBB1 /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
 		03AA61E72B0B98E5003DCBB1 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
@@ -84,10 +92,21 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		039A896B2B21F3A900A5D081 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				039A896C2B21F3C300A5D081 /* DataModel.xcdatamodeld */,
+				039A896F2B21F53700A5D081 /* FileCache.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		03AA61F32B0B9F26003DCBB1 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				03AA61F42B0B9F32003DCBB1 /* Cells */,
+				039A89622B218FE600A5D081 /* Theme.swift */,
+				039A89662B21BB0400A5D081 /* ThemeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +141,7 @@
 		03FFA5722B04F6720043861E /* VK */ = {
 			isa = PBXGroup;
 			children = (
+				039A896B2B21F3A900A5D081 /* CoreData */,
 				033B9EA62B14805700806675 /* Model */,
 				03FFBEFF2B0D079000ECFDF3 /* Network */,
 				03AA61F32B0B9F26003DCBB1 /* View */,
@@ -242,6 +262,7 @@
 				034D93402B0E2B1200699010 /* VKApi.swift in Sources */,
 				03FFBEFE2B0D00CE00ECFDF3 /* Session.swift in Sources */,
 				03AA61F92B0B9FF7003DCBB1 /* GroupTableViewCell.swift in Sources */,
+				039A89632B218FE600A5D081 /* Theme.swift in Sources */,
 				03FB99D52B151F0700D0CAF6 /* Response.swift in Sources */,
 				033B9EA82B14806B00806675 /* Friends.swift in Sources */,
 				033B9EB22B14D95700806675 /* Photo.swift in Sources */,
@@ -254,10 +275,13 @@
 				03FFA5782B04F6720043861E /* LoginViewController.swift in Sources */,
 				03AA61F72B0B9F6B003DCBB1 /* FriendsTableViewCell.swift in Sources */,
 				03FFA5742B04F6720043861E /* AppDelegate.swift in Sources */,
+				039A89702B21F53700A5D081 /* FileCache.swift in Sources */,
+				039A89672B21BB0400A5D081 /* ThemeView.swift in Sources */,
 				033B9EAE2B14AD7B00806675 /* UIImageView+Extension.swift in Sources */,
 				033B9EB02B14D29500806675 /* Groups.swift in Sources */,
 				03FFA5762B04F6720043861E /* SceneDelegate.swift in Sources */,
 				03194D3B2B0BB33600E7BB92 /* ChatTextTableViewCell.swift in Sources */,
+				039A896E2B21F3C300A5D081 /* DataModel.xcdatamodeld in Sources */,
 				036EA0EC2B1DB5D6009AF8A0 /* ProfileViewController.swift in Sources */,
 				03AA61E42B0B98C2003DCBB1 /* FriendsViewController.swift in Sources */,
 				03FFA58D2B04FD9D0043861E /* ExtensionColor.swift in Sources */,
@@ -471,6 +495,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		039A896C2B21F3C300A5D081 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				039A896D2B21F3C300A5D081 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 039A896D2B21F3C300A5D081 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 03FFA5682B04F6720043861E /* Project object */;
 }

@@ -25,6 +25,9 @@ class PhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = Theme.currentTheme.backgroundColor
+        collectionView.backgroundColor = Theme.currentTheme.backgroundColor
+        navigationController?.navigationBar.backgroundColor = Theme.currentTheme.backgroundColor
         title = "Фото"
         view.addSubview(collectionView)
         collectionView.dataSource = self
