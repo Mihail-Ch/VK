@@ -15,13 +15,16 @@ final class ThemeView: UIView {
     
     var delegateTheme: ThemeViewProtocol?
     
+    //MARK: - Elements
+    
     private let stackVerticalButton: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.alignment = .fill
-        stackView.spacing = 20
+        stackView.spacing = 12
         stackView.distribution = .fill
+        stackView.backgroundColor = .clear
         return stackView
     }()
     
@@ -31,6 +34,7 @@ final class ThemeView: UIView {
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.backgroundColor = SystemBackground().backgroundColor
+        button.layer.cornerRadius = 7
         return button
     }()
     
@@ -40,6 +44,7 @@ final class ThemeView: UIView {
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.backgroundColor = LightGrayBackground().backgroundColor
+        button.layer.cornerRadius = 7
         return button
     }()
     
@@ -49,59 +54,61 @@ final class ThemeView: UIView {
         button.layer.borderColor = UIColor.black.cgColor
         button.layer.borderWidth = 1
         button.backgroundColor = RedBackground().backgroundColor
+        button.layer.cornerRadius = 7
         return button
     }()
     
+    //MARK: - Init
     
     init() {
         super.init(frame: .zero)
-        self.backgroundColor = .systemBlue//Theme.currentTheme.backgroundColor
         setupViews()
         buttonSystemBack.addTarget(self, action: #selector(tapSystemBack), for: .touchUpInside)
         buttonGrayBack.addTarget(self, action: #selector(tapGrayBack), for: .touchUpInside)
         buttonRedBack.addTarget(self, action: #selector(tapRedBack), for: .touchUpInside)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Layout
+    
     private func setupViews() {
         stackVerticalButton.addArrangedSubview(buttonSystemBack)
         stackVerticalButton.addArrangedSubview(buttonGrayBack)
         stackVerticalButton.addArrangedSubview(buttonRedBack)
         addSubview(stackVerticalButton)
+        setupConstraints()
     }
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            stackVerticalButton.topAnchor.constraint(equalTo: topAnchor),
-            stackVerticalButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackVerticalButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackVerticalButton.bottomAnchor.constraint(equalTo: bottomAnchor)
+            stackVerticalButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            stackVerticalButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            stackVerticalButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
+            stackVerticalButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 10)
         ])
     }
-    
 }
 
+//MARK: - Method + Extension
 
 private extension ThemeView {
     
     @objc func tapSystemBack() {
         Theme.currentTheme = SystemBackground()
-        backgroundColor = Theme.currentTheme.backgroundColor
         delegateTheme?.updateColor()
     }
     
     @objc func tapGrayBack() {
         Theme.currentTheme = LightGrayBackground()
-        backgroundColor = Theme.currentTheme.backgroundColor
         delegateTheme?.updateColor()
     }
     
     @objc func tapRedBack() {
         Theme.currentTheme = RedBackground()
-        backgroundColor = Theme.currentTheme.backgroundColor
         delegateTheme?.updateColor()
     }
 }

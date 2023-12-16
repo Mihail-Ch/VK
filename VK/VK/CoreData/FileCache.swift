@@ -46,7 +46,7 @@ final class FileCache {
         }
         save()
         //addFriendData()
-        }
+    }
     
     func fetchFriends() -> [Friends] {
         let fetchRequest: NSFetchRequest<FriendModelCD> = FriendModelCD.fetchRequest()
@@ -60,7 +60,7 @@ final class FileCache {
         return newFriends
     }
     
-    func addFriends(groups: [Groups]) {
+    func addGroups(groups: [Groups]) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "GroupModelCD")
         for group in groups {
             fetchRequest.predicate = NSPredicate(format: "id = %@", argumentArray: [group.id])
@@ -72,6 +72,7 @@ final class FileCache {
             groupModel.id = Int64(group.id)
             groupModel.name = group.name
             groupModel.avatar = group.avatar
+            groupModel.caption = group.caption
         }
         save()
         //addFriendData()
@@ -84,7 +85,7 @@ final class FileCache {
         }
         var newGroups: [Groups] = []
         for group in groups {
-            newGroups.append(Groups(id: Int(group.id), name: group.name ?? "", avatar: group.avatar ?? "", description: group.caption ?? ""))
+            newGroups.append(Groups(id: Int(group.id), name: group.name ?? "", avatar: group.avatar ?? "", caption: group.caption ?? ""))
         }
         return newGroups
     }

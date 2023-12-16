@@ -13,7 +13,9 @@ protocol AppTheme {
 }
 
 final class Theme {
+    
     static var currentTheme: AppTheme = SystemBackground()
+    
 }
 
 final class SystemBackground: AppTheme {

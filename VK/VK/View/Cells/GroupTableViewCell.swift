@@ -55,38 +55,11 @@ class GroupTableViewCell: UITableViewCell {
         return stackView
     }()
     
-    func configureCell(avatar: String, title: String, description: String) {
+    func configureCell(avatar: String, title: String, description: String?) {
         self.avatarGroupImage.getPhoto(url: avatar)
         self.titleLabelGroup.text = title
+        guard (description != nil) else { return }
         self.descriptionGroup.text = description
-    }
-    
-    
-    private func createUI() {
-        contentView.addSubview(avatarGroupView)
-        contentView.addSubview(avatarGroupImage)
-        stackVerticalTitle.addArrangedSubview(titleLabelGroup)
-        stackVerticalTitle.addArrangedSubview(descriptionGroup)
-        contentView.addSubview(stackVerticalTitle)
-
-        NSLayoutConstraint.activate([
-            
-            avatarGroupView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            avatarGroupView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            avatarGroupView.heightAnchor.constraint(equalToConstant: 50),
-            avatarGroupView.widthAnchor.constraint(equalTo: avatarGroupView.heightAnchor, multiplier: 1/1),
-            
-            avatarGroupImage.centerYAnchor.constraint(equalTo: avatarGroupView.centerYAnchor),
-            avatarGroupImage.centerXAnchor.constraint(equalTo: avatarGroupView.centerXAnchor),
-            avatarGroupImage.heightAnchor.constraint(equalTo: avatarGroupView.heightAnchor),
-            avatarGroupImage.widthAnchor.constraint(equalTo: avatarGroupView.widthAnchor, multiplier: 1/1),
-            
-            stackVerticalTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            stackVerticalTitle.leadingAnchor.constraint(equalTo: avatarGroupView.trailingAnchor, constant: 10),
-            stackVerticalTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            stackVerticalTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
-            stackVerticalTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
-        ])
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -99,6 +72,8 @@ class GroupTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
         
     }
+    
+    //MARK: - Method
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -117,6 +92,35 @@ class GroupTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    //MARK: - Constraints
+    
+    private func createUI() {
+        contentView.addSubview(avatarGroupView)
+        contentView.addSubview(avatarGroupImage)
+        stackVerticalTitle.addArrangedSubview(titleLabelGroup)
+        stackVerticalTitle.addArrangedSubview(descriptionGroup)
+        contentView.addSubview(stackVerticalTitle)
+        
+        NSLayoutConstraint.activate([
+            
+            avatarGroupView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            avatarGroupView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            avatarGroupView.heightAnchor.constraint(equalToConstant: 50),
+            avatarGroupView.widthAnchor.constraint(equalTo: avatarGroupView.heightAnchor, multiplier: 1/1),
+            
+            avatarGroupImage.centerYAnchor.constraint(equalTo: avatarGroupView.centerYAnchor),
+            avatarGroupImage.centerXAnchor.constraint(equalTo: avatarGroupView.centerXAnchor),
+            avatarGroupImage.heightAnchor.constraint(equalTo: avatarGroupView.heightAnchor),
+            avatarGroupImage.widthAnchor.constraint(equalTo: avatarGroupView.widthAnchor, multiplier: 1/1),
+            
+            stackVerticalTitle.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            stackVerticalTitle.leadingAnchor.constraint(equalTo: avatarGroupView.trailingAnchor, constant: 10),
+            stackVerticalTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            stackVerticalTitle.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+            stackVerticalTitle.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
+        ])
     }
 
 }

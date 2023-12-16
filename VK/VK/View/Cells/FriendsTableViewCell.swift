@@ -12,9 +12,11 @@ import UIKit
 class FriendsTableViewCell: UITableViewCell {
 
     var buttonChat: (() -> Void)?
-    var tap: ((String?, UIImage?) -> Void)?
+    var tapProfileController: ((String?, UIImage?) -> Void)?
     
     static let reuseId = "friendsTableViewCell"
+    
+    //MARK: - Element UI
     
     private let avatarView: UIView = {
         let view = UIView()
@@ -94,7 +96,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        //    self.contentView.backgroundColor = Theme.currentTheme.backgroundColor
+        backgroundColor = .clear
         createUI()
         phoneButton.addTarget(self, action: #selector(pressPhoneButton), for: .touchUpInside)
         messageButton.addTarget(self, action: #selector(pressMessageButton), for: .touchUpInside)
@@ -110,7 +112,7 @@ class FriendsTableViewCell: UITableViewCell {
     //MARK: - @objk & func
     
     @objc private func cellClick() {
-        tap?(fullNameLabel.text, avatarImage.image)
+        tapProfileController?(fullNameLabel.text, avatarImage.image)
     }
     
     func configure(avatar: String?, firstName: String?, lastName: String?, city: String?, online: Int) {
@@ -222,12 +224,5 @@ class FriendsTableViewCell: UITableViewCell {
         descriptionUser.text = nil
         online.image = nil
     }
-  
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        
-    }
-
+    
 }

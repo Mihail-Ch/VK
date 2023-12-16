@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 
 final class VKApi {
@@ -123,21 +124,24 @@ final class VKApi {
                 let response = try JSONDecoder().decode(Response<Friends>.self, from: data).response.items
                 complition(.success(response))
             } catch {
-                complition(.failure(error))
+                complition(.failure(NetworkError.dataError))
             }
         }
     }
     
     //MARK: Get Group
    
-    func getGroups(complition: @escaping ([Groups]) -> Void) {
+    func getGroups(complition: @escaping (Result<[Groups], Error>) -> Void) {
         request(.groups) { (data) in
-            guard let data = data else { return }
+            guard let data = data else {
+                complition(.failure(Error.self as! Error))
+                return
+            }
             do {
                 let response = try JSONDecoder().decode(Response<Groups>.self, from: data).response.items
-                complition(response)
+                complition(.success(response))
             } catch {
-                print(error)
+                complition(.failure(NetworkError.dataError))
             }
         }
     }
