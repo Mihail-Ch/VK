@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03D1F1582B416F7F009CDE6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1572B416F7F009CDE6E /* AppDelegate.swift */; };
+		03D1F15A2B416F7F009CDE6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1592B416F7F009CDE6E /* SceneDelegate.swift */; };
+		03D1F15C2B416F7F009CDE6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F15B2B416F7F009CDE6E /* ViewController.swift */; };
+		03D1F1612B416F82009CDE6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03D1F1602B416F82009CDE6E /* Assets.xcassets */; };
+		03D1F1642B416F82009CDE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03D1F1622B416F82009CDE6E /* LaunchScreen.storyboard */; };
+		03D1F16D2B416FBB009CDE6E /* Friends.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F16C2B416FBB009CDE6E /* Friends.swift */; };
+		03D1F16F2B4171F5009CDE6E /* Groups.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F16E2B4171F5009CDE6E /* Groups.swift */; };
+		03D1F1712B417225009CDE6E /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1702B417225009CDE6E /* Photo.swift */; };
+		03D1F1732B417240009CDE6E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1722B417240009CDE6E /* User.swift */; };
+		03D1F1772B41729E009CDE6E /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1762B41729E009CDE6E /* FriendsTableViewCell.swift */; };
+		03D1F1792B4172DA009CDE6E /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1782B4172D9009CDE6E /* GroupTableViewCell.swift */; };
+		03D1F17B2B417308009CDE6E /* PhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F17A2B417308009CDE6E /* PhotosCollectionViewCell.swift */; };
+		03D1F17D2B417335009CDE6E /* ChatTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F17C2B417335009CDE6E /* ChatTextTableViewCell.swift */; };
+		03D1F1802B417364009CDE6E /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F17F2B417364009CDE6E /* Theme.swift */; };
+		03D1F1822B417396009CDE6E /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1812B417396009CDE6E /* ThemeView.swift */; };
+		03D1F1852B4173F1009CDE6E /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1842B4173F1009CDE6E /* UIColor+Extension.swift */; };
+		03D1F1872B417417009CDE6E /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1862B417417009CDE6E /* Session.swift */; };
+		03D1F1892B41743A009CDE6E /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1882B41743A009CDE6E /* UIImageView+Extension.swift */; };
+		03D1F18D2B417473009CDE6E /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F18C2B417473009CDE6E /* Response.swift */; };
+		03D1F18F2B4174A1009CDE6E /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F18E2B4174A1009CDE6E /* VKApi.swift */; };
+		03D1F1912B417503009CDE6E /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1902B417503009CDE6E /* AuthorizationViewController.swift */; };
+		03D1F1932B41753A009CDE6E /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1922B41753A009CDE6E /* FriendsViewController.swift */; };
+		03D1F1952B417559009CDE6E /* GroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1942B417559009CDE6E /* GroupsViewController.swift */; };
+		03D1F1972B417582009CDE6E /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1962B417582009CDE6E /* PhotosViewController.swift */; };
+		03D1F1992B4175C6009CDE6E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1982B4175C6009CDE6E /* ChatViewController.swift */; };
+		03D1F19B2B4175E7009CDE6E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F19A2B4175E7009CDE6E /* ProfileViewController.swift */; };
+		03D1F19D2B417605009CDE6E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F19C2B417605009CDE6E /* LoginViewController.swift */; };
+		03D1F1A02B417641009CDE6E /* FileCash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F19F2B417641009CDE6E /* FileCash.swift */; };
+		03D1F1A32B41766A009CDE6E /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03D1F1A12B41766A009CDE6E /* DataModel.xcdatamodeld */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		03D1F1542B416F7F009CDE6E /* ВКонтакте.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ВКонтакте.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		03D1F1572B416F7F009CDE6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		03D1F1592B416F7F009CDE6E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		03D1F15B2B416F7F009CDE6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		03D1F1602B416F82009CDE6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		03D1F1632B416F82009CDE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		03D1F1652B416F82009CDE6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03D1F16C2B416FBB009CDE6E /* Friends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Friends.swift; sourceTree = "<group>"; };
+		03D1F16E2B4171F5009CDE6E /* Groups.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groups.swift; sourceTree = "<group>"; };
+		03D1F1702B417225009CDE6E /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
+		03D1F1722B417240009CDE6E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		03D1F1762B41729E009CDE6E /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		03D1F1782B4172D9009CDE6E /* GroupTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		03D1F17A2B417308009CDE6E /* PhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionViewCell.swift; sourceTree = "<group>"; };
+		03D1F17C2B417335009CDE6E /* ChatTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTextTableViewCell.swift; sourceTree = "<group>"; };
+		03D1F17F2B417364009CDE6E /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		03D1F1812B417396009CDE6E /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
+		03D1F1842B4173F1009CDE6E /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		03D1F1862B417417009CDE6E /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		03D1F1882B41743A009CDE6E /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		03D1F18C2B417473009CDE6E /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		03D1F18E2B4174A1009CDE6E /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
+		03D1F1902B417503009CDE6E /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		03D1F1922B41753A009CDE6E /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		03D1F1942B417559009CDE6E /* GroupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupsViewController.swift; sourceTree = "<group>"; };
+		03D1F1962B417582009CDE6E /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		03D1F1982B4175C6009CDE6E /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		03D1F19A2B4175E7009CDE6E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		03D1F19C2B417605009CDE6E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		03D1F19F2B417641009CDE6E /* FileCash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCash.swift; sourceTree = "<group>"; };
+		03D1F1A22B41766A009CDE6E /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03D1F1512B416F7F009CDE6E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		03D1F14B2B416F7F009CDE6E = {
+			isa = PBXGroup;
+			children = (
+				03D1F1562B416F7F009CDE6E /* ВКонтакте */,
+				03D1F1552B416F7F009CDE6E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		03D1F1552B416F7F009CDE6E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F1542B416F7F009CDE6E /* ВКонтакте.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		03D1F1562B416F7F009CDE6E /* ВКонтакте */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F19E2B417629009CDE6E /* CoreData */,
+				03D1F18B2B417460009CDE6E /* Network */,
+				03D1F18A2B417452009CDE6E /* Controllers */,
+				03D1F1832B4173C6009CDE6E /* Helpers */,
+				03D1F16B2B416F9B009CDE6E /* Model */,
+				03D1F1742B417259009CDE6E /* View */,
+				03D1F1572B416F7F009CDE6E /* AppDelegate.swift */,
+				03D1F1592B416F7F009CDE6E /* SceneDelegate.swift */,
+				03D1F15B2B416F7F009CDE6E /* ViewController.swift */,
+				03D1F1602B416F82009CDE6E /* Assets.xcassets */,
+				03D1F1622B416F82009CDE6E /* LaunchScreen.storyboard */,
+				03D1F1652B416F82009CDE6E /* Info.plist */,
+			);
+			path = "ВКонтакте";
+			sourceTree = "<group>";
+		};
+		03D1F16B2B416F9B009CDE6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F16C2B416FBB009CDE6E /* Friends.swift */,
+				03D1F16E2B4171F5009CDE6E /* Groups.swift */,
+				03D1F1702B417225009CDE6E /* Photo.swift */,
+				03D1F1722B417240009CDE6E /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		03D1F1742B417259009CDE6E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F1752B41726A009CDE6E /* Cells */,
+				03D1F17F2B417364009CDE6E /* Theme.swift */,
+				03D1F1812B417396009CDE6E /* ThemeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03D1F1752B41726A009CDE6E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F1762B41729E009CDE6E /* FriendsTableViewCell.swift */,
+				03D1F1782B4172D9009CDE6E /* GroupTableViewCell.swift */,
+				03D1F17A2B417308009CDE6E /* PhotosCollectionViewCell.swift */,
+				03D1F17C2B417335009CDE6E /* ChatTextTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		03D1F1832B4173C6009CDE6E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F1842B4173F1009CDE6E /* UIColor+Extension.swift */,
+				03D1F1862B417417009CDE6E /* Session.swift */,
+				03D1F1882B41743A009CDE6E /* UIImageView+Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		03D1F18A2B417452009CDE6E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F1902B417503009CDE6E /* AuthorizationViewController.swift */,
+				03D1F1942B417559009CDE6E /* GroupsViewController.swift */,
+				03D1F1962B417582009CDE6E /* PhotosViewController.swift */,
+				03D1F1982B4175C6009CDE6E /* ChatViewController.swift */,
+				03D1F19A2B4175E7009CDE6E /* ProfileViewController.swift */,
+				03D1F1922B41753A009CDE6E /* FriendsViewController.swift */,
+				03D1F19C2B417605009CDE6E /* LoginViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		03D1F18B2B417460009CDE6E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F18C2B417473009CDE6E /* Response.swift */,
+				03D1F18E2B4174A1009CDE6E /* VKApi.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		03D1F19E2B417629009CDE6E /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				03D1F19F2B417641009CDE6E /* FileCash.swift */,
+				03D1F1A12B41766A009CDE6E /* DataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		03D1F1532B416F7F009CDE6E /* ВКонтакте */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 03D1F1682B416F82009CDE6E /* Build configuration list for PBXNativeTarget "ВКонтакте" */;
+			buildPhases = (
+				03D1F1502B416F7F009CDE6E /* Sources */,
+				03D1F1512B416F7F009CDE6E /* Frameworks */,
+				03D1F1522B416F7F009CDE6E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ВКонтакте";
+			productName = "ВКонтакте";
+			productReference = 03D1F1542B416F7F009CDE6E /* ВКонтакте.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		03D1F14C2B416F7F009CDE6E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1510;
+				LastUpgradeCheck = 1510;
+				TargetAttributes = {
+					03D1F1532B416F7F009CDE6E = {
+						CreatedOnToolsVersion = 15.1;
+					};
+				};
+			};
+			buildConfigurationList = 03D1F14F2B416F7F009CDE6E /* Build configuration list for PBXProject "ВКонтакте" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 03D1F14B2B416F7F009CDE6E;
+			productRefGroup = 03D1F1552B416F7F009CDE6E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				03D1F1532B416F7F009CDE6E /* ВКонтакте */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		03D1F1522B416F7F009CDE6E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D1F1642B416F82009CDE6E /* LaunchScreen.storyboard in Resources */,
+				03D1F1612B416F82009CDE6E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		03D1F1502B416F7F009CDE6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03D1F1792B4172DA009CDE6E /* GroupTableViewCell.swift in Sources */,
+				03D1F1972B417582009CDE6E /* PhotosViewController.swift in Sources */,
+				03D1F17B2B417308009CDE6E /* PhotosCollectionViewCell.swift in Sources */,
+				03D1F1712B417225009CDE6E /* Photo.swift in Sources */,
+				03D1F18F2B4174A1009CDE6E /* VKApi.swift in Sources */,
+				03D1F18D2B417473009CDE6E /* Response.swift in Sources */,
+				03D1F19B2B4175E7009CDE6E /* ProfileViewController.swift in Sources */,
+				03D1F1822B417396009CDE6E /* ThemeView.swift in Sources */,
+				03D1F15C2B416F7F009CDE6E /* ViewController.swift in Sources */,
+				03D1F1912B417503009CDE6E /* AuthorizationViewController.swift in Sources */,
+				03D1F1872B417417009CDE6E /* Session.swift in Sources */,
+				03D1F1582B416F7F009CDE6E /* AppDelegate.swift in Sources */,
+				03D1F1772B41729E009CDE6E /* FriendsTableViewCell.swift in Sources */,
+				03D1F19D2B417605009CDE6E /* LoginViewController.swift in Sources */,
+				03D1F1A02B417641009CDE6E /* FileCash.swift in Sources */,
+				03D1F1852B4173F1009CDE6E /* UIColor+Extension.swift in Sources */,
+				03D1F17D2B417335009CDE6E /* ChatTextTableViewCell.swift in Sources */,
+				03D1F1892B41743A009CDE6E /* UIImageView+Extension.swift in Sources */,
+				03D1F1952B417559009CDE6E /* GroupsViewController.swift in Sources */,
+				03D1F1992B4175C6009CDE6E /* ChatViewController.swift in Sources */,
+				03D1F15A2B416F7F009CDE6E /* SceneDelegate.swift in Sources */,
+				03D1F16F2B4171F5009CDE6E /* Groups.swift in Sources */,
+				03D1F1932B41753A009CDE6E /* FriendsViewController.swift in Sources */,
+				03D1F1802B417364009CDE6E /* Theme.swift in Sources */,
+				03D1F1A32B41766A009CDE6E /* DataModel.xcdatamodeld in Sources */,
+				03D1F16D2B416FBB009CDE6E /* Friends.swift in Sources */,
+				03D1F1732B417240009CDE6E /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		03D1F1622B416F82009CDE6E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				03D1F1632B416F82009CDE6E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		03D1F1662B416F82009CDE6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		03D1F1672B416F82009CDE6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		03D1F1692B416F82009CDE6E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27HNUHGL83;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ВКонтакте/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mihail.chertov-gmail.com.---------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		03D1F16A2B416F82009CDE6E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 27HNUHGL83;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "ВКонтакте/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mihail.chertov-gmail.com.---------";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		03D1F14F2B416F7F009CDE6E /* Build configuration list for PBXProject "ВКонтакте" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03D1F1662B416F82009CDE6E /* Debug */,
+				03D1F1672B416F82009CDE6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		03D1F1682B416F82009CDE6E /* Build configuration list for PBXNativeTarget "ВКонтакте" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				03D1F1692B416F82009CDE6E /* Debug */,
+				03D1F16A2B416F82009CDE6E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		03D1F1A12B41766A009CDE6E /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				03D1F1A22B41766A009CDE6E /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 03D1F1A22B41766A009CDE6E /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 03D1F14C2B416F7F009CDE6E /* Project object */;
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "1A16D360-38E2-45EF-9B60-A1A68E52082B"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7380BB12-A4FF-4655-90BC-13A6995FA1D0"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "&#x412;&#x41a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x435;/Controllers/FriendsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7380BB12-A4FF-4655-90BC-13A6995FA1D0 - 7f49ae9d13907cb3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "&#x412;&#x41a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x435;.FriendsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "&#x412;&#x41a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x435;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihailchertov/Desktop/%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5/%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5/Controllers/FriendsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "1929">
+               </Location>
+               <Location
+                  uuid = "7380BB12-A4FF-4655-90BC-13A6995FA1D0 - 3ada00b7b7620ab9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;Swift.String&gt;, Swift.Optional&lt;__C.UIImage&gt;) -&gt; () in &#x412;&#x41a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x435;.FriendsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "&#x412;&#x41a;&#x43e;&#x43d;&#x442;&#x430;&#x43a;&#x442;&#x435;"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/mihailchertov/Desktop/%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5/%D0%92%D0%9A%D0%BE%D0%BD%D1%82%D0%B0%D0%BA%D1%82%D0%B5/Controllers/FriendsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "105">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
